@@ -10,20 +10,20 @@ import java.util.Arrays;
 
 @Component
 @Profile("!prd")
-public class AuthRunner implements CommandLineRunner {
+public class AuthApplicationRunner implements CommandLineRunner {
     private final Environment environment;
     private final AuthService authService;
 
-    public AuthRunner(Environment environment, AuthService authService) {
+    public AuthApplicationRunner(Environment environment, AuthService authService) {
         this.environment = environment;
         this.authService = authService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.printf("\nAuthRunner is running on profile %s ...\n", environment.getActiveProfiles());
+        System.out.printf("\nAuthApplicationRunner is running on profile %s ...\n", environment.getActiveProfiles());
 
-        System.out.println("AuthRunner is creating user 'user' with role 'user' ...");
+        System.out.println("AuthApplicationRunner is creating user 'user' with role 'USER' ...");
         authService.assignPermissionsToRole(
                 authService.findOrCreateRole("USER"),
                 Arrays.asList(
@@ -35,7 +35,7 @@ public class AuthRunner implements CommandLineRunner {
                 authService.findOrCreateUser("user")
         );
 
-        System.out.println("AuthRunner is creating user 'admin' with role 'ADMIN' ...");
+        System.out.println("AuthApplicationRunner is creating user 'admin' with role 'ADMIN' ...");
         authService.assignPermissionsToRole(
                 authService.findOrCreateRole("ADMIN"),
                 Arrays.asList(
@@ -49,5 +49,7 @@ public class AuthRunner implements CommandLineRunner {
                 authService.findOrCreateRole("ADMIN"),
                 authService.findOrCreateUser("admin")
         );
+
+        System.out.println("AuthApplicationRunner finished. \n");
     }
 }

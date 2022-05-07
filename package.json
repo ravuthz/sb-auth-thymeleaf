@@ -1,0 +1,11 @@
+{
+  "name": "sb-auth-thymeleaf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ravuthz/sb-auth-thymeleaf.git",
+  "author": "Ravuthz <ravuthz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "admin-lte": "^3.2"
+  }
+}

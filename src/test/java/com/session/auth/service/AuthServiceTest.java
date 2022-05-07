@@ -8,23 +8,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class AuthServiceTest {
+    private final AuthService authService;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    private AuthService authService;
-
-    @Autowired
-    private RoleRepository roleRepository;
+    public AuthServiceTest(AuthService authService, RoleRepository roleRepository) {
+        this.authService = authService;
+        this.roleRepository = roleRepository;
+    }
 
     @Test
     public void createUser() {
         authService.assignPermissionsToRole(
                 authService.findOrCreateRole("USER"),
-                Arrays.asList(
+                Collections.singletonList(
                         authService.findOrCreatePermission("VIEW_APP")
                 ));
 
@@ -59,7 +62,7 @@ public class AuthServiceTest {
     @Test
     public void testValidation() {
         assertThrows(DataIntegrityViolationException.class, () -> {
-            Role role1 = new Role("ROLE1");
+            Role role1 = authService.findOrCreateRole("ROLE1");
             role1.setNote("ROLE1 description");
 
             Role role2 = new Role("ROLE1");

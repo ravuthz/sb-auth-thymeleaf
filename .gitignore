@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Web / ClientSide ###
+**/node_modules/
+**/bower_components/
