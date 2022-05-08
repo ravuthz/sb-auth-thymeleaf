@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/page.html}">
 <head>
-    <title>Error page</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}"/>
+    <title>Error</title>
 </head>
 <body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
-<h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
-<p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
-<a href="index.html" th:href="@{/}">Back to Home Page</a>
+    <section class="content"  layout:fragment="content">
+    <h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
+    <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+    <a href="index.html" th:href="@{/}">Back to Home Page</a>
+    </section>
 </body>
 </html>

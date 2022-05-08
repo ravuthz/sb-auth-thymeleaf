@@ -1,50 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome</title>
-
-    <link rel="stylesheet" href="/static/node_modules/admin-lte/dist/css/adminlte.min.css" />
+    <title>Admin</title>
 </head>
 <body>
+    <section class="content"  layout:fragment="content">
+        <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
+        <p>1. Visit <a th:href="@{/admin}">Admin page (Spring Security protected, Need Admin Role)</a></p>
+        <p>2. Visit <a th:href="@{/user}">User page (Spring Security protected, Need User Role)</a></p>
 
-<div class="container">
-    <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
-    <p>1. Visit <a th:href="@{/admin}">Admin page (Spring Security protected, Need Admin Role)</a></p>
-    <p>2. Visit <a th:href="@{/user}">User page (Spring Security protected, Need User Role)</a></p>
-
-    <div sec:authorize="isAuthenticated()">
-        This content is only shown to authenticated users.
-    </div>
-
-    <div sec:authorize="hasAnyRole('ROLE_ADMIN') or hasAuthority('ADMIN')">
-        This content is only shown to administrators.
-    </div>
-
-    <div sec:authorize="hasRole('ROLE_USER') or hasAuthority('USER')">
-        This content is only shown to users.
-    </div>
-
-    <footer>
-        <div sec:authorize="!isAuthenticated()">
-            <a th:href="@{/login}">Sign In</a>
-        </div>
         <div sec:authorize="isAuthenticated()">
-            <div>Logged user: <span sec:authentication="name"></span></div>
-            <div>Roles: <span sec:authentication="principal.authorities"></span></div>
-            <a th:href="@{/logout}">Sign Out</a>
+            This content is only shown to authenticated users.
         </div>
 
-        <p>&copy; 2022 <a href="http://ravuthz.github.io">Ravuthz</a></p>
-    </footer>
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN') or hasAuthority('ADMIN')">
+            This content is only shown to administrators.
+        </div>
 
-</div>
-
-    <script src="/static/node_modules/admin-lte/dist/js/adminlte.min.js"></script>
-
+        <div sec:authorize="hasRole('ROLE_USER') or hasAuthority('USER')">
+            This content is only shown to users.
+        </div>
+    </section>
 </body>
 </html>

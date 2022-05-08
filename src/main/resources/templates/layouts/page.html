@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Template Layout</title>
+    <div th:replace="fragments/admin-lte-styles"></div>
+</head>
+<body>
+    <div class="container">
+        <!-- Content Start HERE -->
+        <section class="content" layout:fragment="content"></section>
+        <!-- Content End HERE -->
+    </div>
+    <div th:replace="fragments/admin-lte-scripts"></div>
+</body>
+</html>
