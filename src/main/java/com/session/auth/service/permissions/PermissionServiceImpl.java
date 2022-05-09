@@ -22,7 +22,7 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Permission add() {
+    public Permission save() {
         return null;
     }
 

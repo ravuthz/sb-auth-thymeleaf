@@ -10,7 +10,7 @@ public interface PermissionService {
 
     List<Permission> list();
 
-    Permission add();
+    Permission save();
 
     Permission delete();
 

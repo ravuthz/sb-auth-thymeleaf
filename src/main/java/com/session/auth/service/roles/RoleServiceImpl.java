@@ -19,13 +19,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role add() {
-        return null;
+    public Role getById(Long id) {
+        return roleRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Role delete() {
-        return null;
+    public void save(Role role) {
+        roleRepository.save(role);
     }
 
 }
