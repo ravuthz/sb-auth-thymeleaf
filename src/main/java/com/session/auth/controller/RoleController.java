@@ -1,7 +1,6 @@
 package com.session.auth.controller;
 
 
-import com.session.auth.model.Permission;
 import com.session.auth.model.Role;
 import com.session.auth.service.permissions.PermissionService;
 import com.session.auth.service.roles.RoleService;

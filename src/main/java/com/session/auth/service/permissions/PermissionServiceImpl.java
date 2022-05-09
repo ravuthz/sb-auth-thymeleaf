@@ -1,10 +1,7 @@
 package com.session.auth.service.permissions;
 
 import com.session.auth.model.Permission;
-import com.session.auth.model.Role;
 import com.session.auth.repository.PermissionRepository;
-import com.session.auth.repository.RoleRepository;
-import com.session.auth.service.roles.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
