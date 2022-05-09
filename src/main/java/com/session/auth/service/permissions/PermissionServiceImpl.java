@@ -22,13 +22,13 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Permission save() {
-        return null;
+    public Permission getById(Long id) {
+        return permissionRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Permission delete() {
-        return null;
+    public void save(Permission permission) {
+        permissionRepository.save(permission);
     }
 
 }

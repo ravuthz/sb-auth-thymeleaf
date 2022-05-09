@@ -1,6 +1,7 @@
 package com.session.auth.controller;
 
 
+import com.session.auth.model.Permission;
 import com.session.auth.model.Role;
 import com.session.auth.service.permissions.PermissionService;
 import com.session.auth.service.roles.RoleService;
@@ -30,6 +31,13 @@ public class RoleController {
     public String show(Model model, @PathVariable("id") Long id) {
         model.addAttribute("permissions", permissionService.list());
         model.addAttribute("role", roleService.getById(id));
+        return "roles/form";
+    }
+
+    @GetMapping("create")
+    public String create(Model model, @ModelAttribute("role") Role role) {
+        model.addAttribute("permissions", permissionService.list());
+        model.addAttribute("role", new Role());
         return "roles/form";
     }
 

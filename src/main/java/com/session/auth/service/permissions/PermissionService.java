@@ -10,8 +10,8 @@ public interface PermissionService {
 
     List<Permission> list();
 
-    Permission save();
+    Permission getById(Long id);
 
-    Permission delete();
+    void save(Permission role);
 
 }

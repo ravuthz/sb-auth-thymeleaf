@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="col-md-12">
-                            <form th:object="${role}" method="post" th:action="@{./}" >
+                            <form th:object="${permission}" method="post" th:action="@{./}" >
                                 <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
                                 <div class="card-body">
                                     <div class="form-group">
@@ -41,15 +41,6 @@
                                                th:field="*{note}"/>
                                     </div>
 
-                                    <label>Roles:
-
-                                        <input class="form-group" type="checkbox" name="roles"
-                                               th:each="permission : ${permissions}"
-                                               th:text="${permission.name}"
-                                               th:value="${permission.id}"
-                                               th:field="*{permissions}"
-                                        />
-                                    </label>
                                 </div>
 
                                 <div class="card-footer">
