@@ -7,10 +7,18 @@
     <title>Error</title>
 </head>
 <body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
-    <section class="content"  layout:fragment="content">
-    <h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
-    <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
-    <a href="index.html" th:href="@{/}">Back to Home Page</a>
+    <section class="content" layout:fragment="content">
+        <div class="row mt-5 mb-2 error-page">
+            <div class="col-sm-12 text-center">
+                <h1 class="headline"
+                    th:class="${httpStatus.value >= 500} ? 'text-danger' : 'text-warning'"
+                    th:text="|${httpStatus.value} - ${httpStatus.reasonPhrase}|">404</h1>
+                <br/>
+                <pre th:utext="${errorMessage}">Error java.lang.NullPointerException</pre>
+
+                <a href="/" th:href="@{/}">Back to Admin Page</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

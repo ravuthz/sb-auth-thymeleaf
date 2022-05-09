@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
+<head>
+    <title th:text="${data == null} ? 'Create a User' : 'Modify a User'"/>
+</head>
+<body>
+
+<h1 layout:fragment="content_title">User Details #<span th:text="${data.id}"></span></h1>
+
+<ol layout:fragment="content_breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Admin</a></li>
+    <li class="breadcrumb-item"><a href="#" th:href="@{/users}">Users</a></li>
+    <li class="breadcrumb-item active"><span th:text="${data.id}"></span></li>
+</ol>
+
+<section class="content" layout:fragment="content">
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">User # <span th:text="${data.id}"></span></h3>
+        </div>
+        <div class="card-body">
+            <strong><i class="fas fa-book mr-1"></i> Full Name</strong>
+            <p class="text-muted" th:text="${data.fullName}"></p>
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> Email Address</strong>
+            <p class="text-muted" th:text="${data.email}"></p>
+            <hr>
+
+            <strong><i class="fas fa-pencil-alt mr-1"></i> Roles</strong>
+            <p class="text-muted"></p>
+            <span th:each="role : ${data.roles}" class="tag tag-info" th:text="${role.name}"></span>
+            </p>
+        </div>
+    </div>
+
+    <a class="btn btn-primary" th:href="@{/users/{id}/edit(id=${data.id})}">Edit</a>
+    <a class="btn btn-secondary" th:href="@{/users}">Back to list</a>
+
+</section>
+
+</body>
+</html>

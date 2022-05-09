@@ -9,24 +9,40 @@
     <div th:replace="fragments/admin-lte-styles"></div>
 </head>
 <body>
-    <div class="wrapper">
-        <div th:replace="fragments/header::header"></div>
-        <div th:replace="fragments/side-bar"></div>
-        <div class="content-wrapper">
-            <!-- Content Start HERE -->
-            <section class="content" layout:fragment="content"></section>
-            <!-- Content End HERE -->
-            <!--                <div sec:authorize="!isAuthenticated()">-->
-            <!--                    <a th:href="@{/login}">Sign In</a>-->
-            <!--                </div>-->
-            <!--                <div sec:authorize="isAuthenticated()">-->
-            <!--                    <div>Logged user: <span sec:authentication="name"></span></div>-->
-            <!--                    <div>Roles: <span sec:authentication="principal.authorities"></span></div>-->
-            <!--                    <a th:href="@{/logout}">Sign Out</a>-->
-            <!--                </div>-->
-        </div>
+<div class="wrapper">
+    <div th:replace="fragments/header::header"></div>
+    <div th:replace="fragments/side-bar"></div>
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 layout:fragment="content_title">Admin</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol layout:fragment="content_breadcrumb" class="breadcrumb float-sm-right">
+                            <li><a class="breadcrumb-item" href="/">Admin</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content" layout:fragment="content"></section>
+
+        <!--                <div sec:authorize="!isAuthenticated()">-->
+        <!--                    <a th:href="@{/login}">Sign In</a>-->
+        <!--                </div>-->
+        <!--                <div sec:authorize="isAuthenticated()">-->
+        <!--                    <div>Logged user: <span sec:authentication="name"></span></div>-->
+        <!--                    <div>Roles: <span sec:authentication="principal.authorities"></span></div>-->
+        <!--                    <a th:href="@{/logout}">Sign Out</a>-->
+        <!--                </div>-->
     </div>
-    <!-- <div th:replace="fragments/footer"></div>-->
-    <div th:replace="fragments/admin-lte-scripts"></div>
+</div>
+<!-- <div th:replace="fragments/footer"></div>-->
+<div th:replace="fragments/admin-lte-scripts"></div>
 </body>
 </html>

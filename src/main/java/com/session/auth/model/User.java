@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Getter
 @Setter
 @Entity
@@ -34,9 +33,14 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @NotEmpty
     @JsonIgnore
+    @Size(min = 6, max = 250)
     private String password;
+
+    @JsonIgnore
+    @Transient
+    @Size(min = 6, max = 250)
+    private String confirm_password;
 
     @NotEmpty
     @Size(min = 3, max = 250)
@@ -55,6 +59,7 @@ public class User extends BaseEntity {
     private Set<Role> roles = new HashSet<>();
 
     public User(User user) {
+        this.setId(user.getId());
         this.email = user.email;
         this.username = user.username;
         this.password = user.password;

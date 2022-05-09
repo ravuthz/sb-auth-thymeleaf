@@ -62,11 +62,11 @@ public class AuthServiceTest {
     @Test
     public void testValidation() {
         assertThrows(DataIntegrityViolationException.class, () -> {
-            Role role1 = authService.findOrCreateRole("ROLE1");
-            role1.setNote("ROLE1 description");
+            Role role1 = authService.findOrCreateRole("ROLE@1");
+            role1.setNote("ROLE@1 description");
 
-            Role role2 = new Role("ROLE1");
-            role2.setNote("ROLE2 description");
+            Role role2 = new Role("ROLE@1");
+            role2.setNote("ROLE@2 description");
 
             roleRepository.saveAll(Arrays.asList(role1, role2));
         });

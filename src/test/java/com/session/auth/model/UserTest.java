@@ -35,7 +35,6 @@ public class UserTest {
         userRepository.save(user1);
     }
 
-    @Test
     public void createNativeQuery() {
         List<Object[]> resultList = entityManager.createNativeQuery("SELECT * FROM user_role", Object.class)
                 .getResultList();

@@ -2,7 +2,6 @@ package com.session.auth.controller;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +24,6 @@ public class MainController {
 
             Collection<GrantedAuthority> authorities = ((UsernamePasswordAuthenticationToken) principal).getAuthorities();
             System.out.println(authorities);
-
-//            UserDetails userDetails = (UserDetails) principal;
-//            System.out.println(userDetails);
-//            System.out.println(userDetails.getAuthorities());
         }
         return "home.html";
     }
@@ -40,10 +35,6 @@ public class MainController {
 
             Collection<GrantedAuthority> authorities = ((UsernamePasswordAuthenticationToken) principal).getAuthorities();
             System.out.println(authorities);
-
-//            UserDetails userDetails = (UserDetails) principal;
-//            System.out.println(userDetails);
-//            System.out.println(userDetails.getAuthorities());
         }
         return "home.html";
     }
