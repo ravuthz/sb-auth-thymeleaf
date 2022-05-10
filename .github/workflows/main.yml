@@ -15,6 +15,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "sb-auth-thymeleaf"
           heroku_email: "yovannaravuth@gmail.com"
+          branch: "deploy"
           usedocker: true
           docker_build_args: |
             NODE_ENV
