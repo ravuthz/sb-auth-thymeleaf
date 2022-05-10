@@ -11,4 +11,5 @@ WORKDIR /build
 COPY pom.xml /build
 # Download all required dependencies into one layer
 RUN mvn dependency:resolve && mvn compile
-RUN mvn spring-boot:run
+
+RUN mvn clean install -DskipTests
