@@ -12,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-<!--                user2-160x160.jpg -->
+                <!--                user2-160x160.jpg -->
                 <img src="/static/img/avatar.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
@@ -28,83 +28,89 @@
 
                 <!-- menu-open -->
                 <li class="nav-item ">
-                    <a href="#users" class="nav-link">
+                    <a href="#users" class="nav-link" th:href="@{/users}"
+                       th:classappend="${#request.requestURI.contains('/users')} ? 'active' : ''">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Users <i class="right fas fa-angle-left"></i>
+                            Users
+                            <!--                            <i class="right fas fa-angle-left"></i>-->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/users/new" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add User</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/users" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List Users</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <!--                    <ul class="nav nav-treeview">-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/users/new" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>Add User</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/users" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>List Users</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </li>
 
                 <li class="nav-item">
-                    <a href="#roles" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                    <a href="#roles" class="nav-link" th:href="@{/roles}"
+                       th:classappend="${#request.requestURI.contains('/roles')} ? 'active' : ''">
+                        <i class="nav-icon fas fa-solid fa-id-card-clip"></i>
                         <p>
-                            Roles <i class="right fas fa-angle-left"></i>
+                            Roles
+                            <!--                            <i class="right fas fa-angle-left"></i>-->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/roles/new" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Role</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/roles" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List Roles</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <!--                    <ul class="nav nav-treeview">-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/roles/new" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>Add Role</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/roles" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>List Roles</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </li>
 
                 <li class="nav-item">
-                    <a href="#permissions" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                    <a href="#permissions" class="nav-link" th:href="@{/permissions}"
+                       th:classappend="${#request.requestURI.contains('/permissions')} ? 'active' : ''">
+                        <i class="nav-icon fas fa-solid fa-id-card"></i>
                         <p>
-                            Permissions <i class="right fas fa-angle-left"></i>
+                            Permissions
+                            <!--                            <i class="right fas fa-angle-left"></i>-->
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/permissions/new" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Permission</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/permissions" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List Permissions</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <!--                    <ul class="nav nav-treeview">-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/permissions/new" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>Add Permission</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                        <li class="nav-item">-->
+                    <!--                            <a href="/permissions" class="nav-link">-->
+                    <!--                                <i class="far fa-circle nav-icon"></i>-->
+                    <!--                                <p>List Permissions</p>-->
+                    <!--                            </a>-->
+                    <!--                        </li>-->
+                    <!--                    </ul>-->
                 </li>
 
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="nav-link">-->
-<!--                        <i class="nav-icon fas fa-th"></i>-->
-<!--                        <p>-->
-<!--                            Simple Link-->
-<!--                            <span class="right badge badge-danger">New</span>-->
-<!--                        </p>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <!--                <li class="nav-item">-->
+                <!--                    <a href="#" class="nav-link">-->
+                <!--                        <i class="nav-icon fas fa-th"></i>-->
+                <!--                        <p>-->
+                <!--                            Simple Link-->
+                <!--                            <span class="right badge badge-danger">New</span>-->
+                <!--                        </p>-->
+                <!--                    </a>-->
+                <!--                </li>-->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

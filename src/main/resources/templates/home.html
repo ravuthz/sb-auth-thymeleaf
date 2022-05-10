@@ -1,29 +1,15 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/main.html}">
 <head>
     <title>Admin</title>
 </head>
 <body>
-    <section class="content"  layout:fragment="content">
-        <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
-        <p>1. Visit <a th:href="@{/admin}">Admin page (Spring Security protected, Need Admin Role)</a></p>
-        <p>2. Visit <a th:href="@{/user}">User page (Spring Security protected, Need User Role)</a></p>
-
-        <div sec:authorize="isAuthenticated()">
-            This content is only shown to authenticated users.
-        </div>
-
-        <div sec:authorize="hasAnyRole('ROLE_ADMIN') or hasAuthority('ADMIN')">
-            This content is only shown to administrators.
-        </div>
-
-        <div sec:authorize="hasRole('ROLE_USER') or hasAuthority('USER')">
-            This content is only shown to users.
-        </div>
-    </section>
+<h1 layout:fragment="content_title"></h1>
+<ol layout:fragment="content_breadcrumb"></ol>
+<section class="content" layout:fragment="content">
+    <h1 class="text-center">Spring Boot Web Thymeleaf + Spring Security</h1>
+</section>
 </body>
 </html>
