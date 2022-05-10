@@ -3,7 +3,7 @@ name: Deploy to GitHub
 on:
   push:
     branches:
-      - master
+      - deploy
 
 jobs:
   build:
