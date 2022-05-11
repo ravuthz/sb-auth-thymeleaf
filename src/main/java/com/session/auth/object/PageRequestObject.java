@@ -14,7 +14,7 @@ public class PageRequestObject {
     private int page = 1;
 
     @Min(1)
-    private int size = 1;
+    private int size = 3;
 
     public PageRequest toPageRequest() {
         return PageRequest.of(page - 1, size);
