@@ -32,7 +32,8 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2" th:text="${permission.id} ? 'Update' : 'Create'">Save
+                </button>
                 <a class="btn btn-secondary" th:href="@{/permissions}">Back to list</a>
             </div>
         </div>

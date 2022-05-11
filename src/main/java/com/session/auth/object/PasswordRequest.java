@@ -16,5 +16,5 @@ public class PasswordRequest {
     @JsonIgnore
     @NotEmpty
     @Size(min = 6, max = 250)
-    private String confirm_password;
+    private String confirmPassword;
 }

@@ -47,10 +47,10 @@
                             </thead>
                             <tbody>
                             <tr th:each="role : ${roles}">
-                                <td>#</td>
+                                <td th:text="${role.id}">#</td>
                                 <td th:text="${role.name}">Role Name</td>
                                 <td th:text="${role.note}">Remake</td>
-                                <td th:text="${role.createdAt}">DD/MM/YYYY</td>
+                                <td th:text="${#dates.format(role.createdAt, 'dd/MM/yyyy hh:mm aaa')}">DD/MM/YYYY</td>
                                 <td class="project-actions text-center">
                                     <a class="btn btn-primary btn-sm" th:href="@{'/roles/' + ${role.id}}">
                                         <i class="fas fa-eye mr-1">
@@ -63,15 +63,23 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">«</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">»</a></li>
-                        </ul>
+                        <nav th:with="totalPages=${roles.totalPages}, pageSize=${roles.size}">
+                            <ul class="pagination pagination-sm m-0 float-right" th:if="${totalPages > 0}">
+                                <li class="page-item">
+                                    <a class="page-link" th:href="@{/roles(size=${pageSize}, page=1)}">First</a>
+                                </li>
+                                <li class="page-item"
+                                    th:each="pageNumber : ${#numbers.sequence(1, totalPages)}"
+                                    th:classappend="${pageNumber == roles.number + 1} ? active">
+                                    <a class="page-link" th:href="@{/roles(size=${pageSize}, page=${pageNumber})}"
+                                       th:text=${pageNumber}></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" th:href="@{/roles(size=${pageSize}, page=${totalPages})}">Last</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

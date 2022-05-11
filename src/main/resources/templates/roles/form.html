@@ -31,17 +31,28 @@
                            th:field="*{note}"/>
                 </div>
 
-                <label>Roles:
-                    <input class="form-group mr-1" type="checkbox" name="roles"
-                           th:each="permission : ${permissions}"
-                           th:text="${permission.name}"
-                           th:value="${permission.id}"
-                           th:field="*{permissions}"
-                    />
-                </label>
+                <label>Roles:</label>
+
+                <!--                <input class="form-group mr-1" type="checkbox" name="roles"-->
+                <!--                       th:each="permission : ${permissions}"-->
+                <!--                       th:text="${permission.name}"-->
+                <!--                       th:value="${permission.id}"-->
+                <!--                       th:field="*{permissions}"-->
+                <!--                />-->
+                <div class="form-group">
+                    <div class="form-check form-check-inline ml-1"
+                         th:each="permission : ${permissions}"
+                         th:with="permUid=${roleUid + '-perm-' + permission.id}">
+                        <input style="color: blue;" class="form-check-input" type="checkbox" name="permissions"
+                               th:id="${permUid}" th:value="${permission.id}" th:field="*{permissions}"/>
+                        <label class="form-check-label" th:for="${permUid}"
+                               th:text="${permission.name}"></label>
+                    </div>
+                </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2" th:text="${role.id} ? 'Update' : 'Create'">Save
+                </button>
                 <a class="btn btn-secondary" th:href="@{/roles}">Back to list</a>
             </div>
         </div>

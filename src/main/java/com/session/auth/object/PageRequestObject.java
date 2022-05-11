@@ -10,14 +10,17 @@ import javax.validation.constraints.Min;
 @Getter
 @Setter
 public class PageRequestObject {
-    @Min(1)
-    private int page = 1;
+    public static final int DEFAULT_PAGE = 1;
+    public static final int DEFAULT_SIZE = 5;
 
     @Min(1)
-    private int size = 3;
+    private int page = DEFAULT_PAGE;
+
+    @Min(1)
+    private int size = DEFAULT_SIZE;
 
     public PageRequest toPageRequest() {
-        return PageRequest.of(page - 1, size);
+        return PageRequest.of(page - 1, size, Sort.by("id").descending());
     }
 
     public PageRequest toPageRequest(Sort sort) {

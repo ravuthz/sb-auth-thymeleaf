@@ -34,13 +34,11 @@ public class User extends BaseEntity {
     private String username;
 
     @JsonIgnore
-    @Size(min = 6, max = 250)
     private String password;
 
     @JsonIgnore
     @Transient
-    @Size(min = 6, max = 250)
-    private String confirm_password;
+    private String confirmPassword;
 
     @NotEmpty
     @Size(min = 3, max = 250)

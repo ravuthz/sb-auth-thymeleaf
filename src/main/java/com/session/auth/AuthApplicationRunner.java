@@ -27,7 +27,14 @@ public class AuthApplicationRunner implements CommandLineRunner {
         authService.assignPermissionsToRole(
                 authService.findOrCreateRole("USER"),
                 Arrays.asList(
-                        authService.findOrCreatePermission("VIEW_APP")
+                        authService.findOrCreatePermission("CREATE_APP"),
+                        authService.findOrCreatePermission("UPDATE_APP"),
+                        authService.findOrCreatePermission("DELETE_APP"),
+                        authService.findOrCreatePermission("VIEW_APP"),
+
+                        authService.findOrCreatePermission("VIEW_USER"),
+                        authService.findOrCreatePermission("VIEW_ROLE"),
+                        authService.findOrCreatePermission("VIEW_PERMISSION")
                 ));
 
         authService.assignRoleToUser(
@@ -42,7 +49,22 @@ public class AuthApplicationRunner implements CommandLineRunner {
                         authService.findOrCreatePermission("CREATE_APP"),
                         authService.findOrCreatePermission("UPDATE_APP"),
                         authService.findOrCreatePermission("DELETE_APP"),
-                        authService.findOrCreatePermission("VIEW_APP")
+                        authService.findOrCreatePermission("VIEW_APP"),
+
+                        authService.findOrCreatePermission("CREATE_USER"),
+                        authService.findOrCreatePermission("UPDATE_USER"),
+                        authService.findOrCreatePermission("DELETE_USER"),
+                        authService.findOrCreatePermission("VIEW_USER"),
+
+                        authService.findOrCreatePermission("CREATE_ROLE"),
+                        authService.findOrCreatePermission("UPDATE_ROLE"),
+                        authService.findOrCreatePermission("DELETE_ROLE"),
+                        authService.findOrCreatePermission("VIEW_ROLE"),
+
+                        authService.findOrCreatePermission("CREATE_PERMISSION"),
+                        authService.findOrCreatePermission("UPDATE_PERMISSION"),
+                        authService.findOrCreatePermission("DELETE_PERMISSION"),
+                        authService.findOrCreatePermission("VIEW_PERMISSION")
                 ));
 
         authService.assignRoleToUser(

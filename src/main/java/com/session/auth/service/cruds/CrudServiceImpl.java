@@ -2,6 +2,7 @@ package com.session.auth.service.cruds;
 
 import com.session.auth.model.BaseEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@NoArgsConstructor
 public class CrudServiceImpl<T extends BaseEntity> implements CrudService<T> {
 
     @Getter
@@ -18,6 +20,10 @@ public class CrudServiceImpl<T extends BaseEntity> implements CrudService<T> {
 
     public List<T> listAll() {
         return (List<T>) repository.findAll();
+    }
+
+    public CrudServiceImpl(PagingAndSortingRepository<T, Long> repository) {
+        this.repository = repository;
     }
 
     public Page<T> listAll(Pageable pageable) {
