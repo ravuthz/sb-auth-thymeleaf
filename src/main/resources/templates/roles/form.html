@@ -16,47 +16,49 @@
 </ol>
 
 <div layout:fragment="content">
-    <form th:object="${role}" method="post" th:action="@{./}">
-        <div class="card">
-            <div class="card-body">
-                <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="xxx"
-                           th:field="*{name}"/>
-                </div>
-                <div class="form-group">
-                    <label for="note">Note</label>
-                    <input type="text" class="form-control" id="note" placeholder="xxx"
-                           th:field="*{note}"/>
-                </div>
+    <div class="container-fluid">
+        <form th:object="${role}" method="post" th:action="@{./}">
+            <div class="card">
+                <div class="card-body">
+                    <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="xxx"
+                               th:field="*{name}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <input type="text" class="form-control" id="note" placeholder="xxx"
+                               th:field="*{note}"/>
+                    </div>
 
-                <label>Roles:</label>
+                    <label>Roles:</label>
 
-                <!--                <input class="form-group mr-1" type="checkbox" name="roles"-->
-                <!--                       th:each="permission : ${permissions}"-->
-                <!--                       th:text="${permission.name}"-->
-                <!--                       th:value="${permission.id}"-->
-                <!--                       th:field="*{permissions}"-->
-                <!--                />-->
-                <div class="form-group">
-                    <div class="form-check form-check-inline ml-1"
-                         th:each="permission : ${permissions}"
-                         th:with="permUid=${roleUid + '-perm-' + permission.id}">
-                        <input style="color: blue;" class="form-check-input" type="checkbox" name="permissions"
-                               th:id="${permUid}" th:value="${permission.id}" th:field="*{permissions}"/>
-                        <label class="form-check-label" th:for="${permUid}"
-                               th:text="${permission.name}"></label>
+                    <!--                <input class="form-group mr-1" type="checkbox" name="roles"-->
+                    <!--                       th:each="permission : ${permissions}"-->
+                    <!--                       th:text="${permission.name}"-->
+                    <!--                       th:value="${permission.id}"-->
+                    <!--                       th:field="*{permissions}"-->
+                    <!--                />-->
+                    <div class="form-group">
+                        <div class="form-check form-check-inline ml-1"
+                             th:each="permission : ${permissions}"
+                             th:with="permUid=${roleUid + '-perm-' + permission.id}">
+                            <input style="color: blue;" class="form-check-input" type="checkbox" name="permissions"
+                                   th:id="${permUid}" th:value="${permission.id}" th:field="*{permissions}"/>
+                            <label class="form-check-label" th:for="${permUid}"
+                                   th:text="${permission.name}"></label>
+                        </div>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary mr-2" th:text="${role.id} ? 'Update' : 'Create'">Save
+                    </button>
+                    <a class="btn btn-secondary" th:href="@{/roles}">Back to list</a>
+                </div>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2" th:text="${role.id} ? 'Update' : 'Create'">Save
-                </button>
-                <a class="btn btn-secondary" th:href="@{/roles}">Back to list</a>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 </body>
 </html>

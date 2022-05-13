@@ -31,9 +31,8 @@ public class CrudServiceImpl<T extends BaseEntity> implements CrudService<T> {
     }
 
     public T findOrFail(Long id) throws EntityNotFoundException {
-        T entity = repository.findById(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cannot find Entity with id: " + id));
-        return entity;
     }
 
     public void delete(T entity) throws EntityNotFoundException {
@@ -48,11 +47,6 @@ public class CrudServiceImpl<T extends BaseEntity> implements CrudService<T> {
     }
 
     public T save(T entity) {
-//        if (entity.getId() == null) {
-//
-//        } else {
-//
-//        }
         repository.save(entity);
         return entity;
     }

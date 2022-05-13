@@ -1,0 +1,54 @@
+<nav th:fragment="pagination(data, route)"
+     th:with="totalPages=${data.totalPages}, pageSize=${data.size}">
+    <ul class="pagination pagination-sm m-0 float-right" th:if="${totalPages > 0}">
+        <li class="page-item">
+            <a class="page-link" th:href="@{${route}(size=${pageSize}, page=1)}">First</a>
+        </li>
+        <li class="page-item"
+            th:each="pageNumber : ${#numbers.sequence(1, totalPages)}"
+            th:classappend="${pageNumber == data.number + 1} ? active">
+            <a class="page-link" th:href="@{${route}(size=${pageSize}, page=${pageNumber})}"
+               th:text=${pageNumber}></a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" th:href="@{${route}(size=${pageSize}, page=${totalPages})}">Last</a>
+        </li>
+    </ul>
+</nav>
+
+<div th:fragment="tableActions(data, route)" th:with="uid=${data.id}">
+    <div class="btn-group btn-group-sm">
+        <a class="btn btn-primary btn-sm mr-1" th:href="@{${route} + '/{id}'(id=${uid})}">
+            <i class="fas fa-eye"></i>
+        </a>
+        <a class="btn btn-info btn-sm mr-1" th:href="@{${route} + '/{id}/edit'(id=${uid})}">
+            <i class="fas fa-pencil-alt"></i>
+        </a>
+        <a class="btn btn-danger btn-sm" th:href="@{${route} + '/{id}/delete'(id=${uid})}"
+           data-toggle="modal" th:data-target="${'#modal-delete-' + uid}">
+            <i class="fas fa-trash"></i>
+        </a>
+    </div>
+
+    <form th:action="@{${route} + '/{id}'(id=${uid})}" th:method="DELETE">
+        <div class="modal" tabindex="-1" role="dialog" th:id="${'modal-delete-' + uid}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p th:text="'Are you sure want to delete this record #' + ${uid} + '?'"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Yes, I'm sure</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Let's me think</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

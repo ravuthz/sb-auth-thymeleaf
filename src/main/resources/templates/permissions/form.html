@@ -16,29 +16,31 @@
 </ol>
 
 <div layout:fragment="content">
-    <form th:object="${permission}" method="post" th:action="@{./}">
-        <div class="card">
-            <div class="card-body">
-                <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="xxx"
-                           th:field="*{name}"/>
+    <div class="container-fluid">
+        <form th:object="${permission}" method="post" th:action="@{./}">
+            <div class="card">
+                <div class="card-body">
+                    <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="xxx"
+                               th:field="*{name}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <input type="text" class="form-control" id="note" placeholder="xxx"
+                               th:field="*{note}"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="note">Note</label>
-                    <input type="text" class="form-control" id="note" placeholder="xxx"
-                           th:field="*{note}"/>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary mr-2" th:text="${permission.id} ? 'Update' : 'Create'">
+                        Save
+                    </button>
+                    <a class="btn btn-secondary" th:href="@{/permissions}">Back to list</a>
                 </div>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2" th:text="${permission.id} ? 'Update' : 'Create'">Save
-                </button>
-                <a class="btn btn-secondary" th:href="@{/permissions}">Back to list</a>
-            </div>
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>
 </div>
 </body>
