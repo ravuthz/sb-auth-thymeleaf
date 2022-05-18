@@ -3,6 +3,8 @@ package com.session.auth.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,10 +12,12 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+@Audited
 @Getter
 @Setter
 @Entity
 @Table(name = "roles")
+@ToString
 @NoArgsConstructor
 public class Role extends BaseEntity {
 
@@ -30,6 +34,7 @@ public class Role extends BaseEntity {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(name = "role_permission",
             joinColumns = @JoinColumn(name = "role_id"),
