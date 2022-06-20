@@ -5,19 +5,23 @@ import com.session.auth.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class UserTest {
-    private final EntityManager entityManager;
     private final AuthService authService;
     private final UserRepository userRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Autowired
-    public UserTest(EntityManager entityManager, AuthService authService, UserRepository userRepository) {
-        this.entityManager = entityManager;
+    public UserTest(AuthService authService, UserRepository userRepository) {
         this.authService = authService;
         this.userRepository = userRepository;
     }
@@ -36,8 +40,7 @@ public class UserTest {
     }
 
     public void createNativeQuery() {
-        List<Object[]> resultList = entityManager.createNativeQuery("SELECT * FROM user_role", Object.class)
-                .getResultList();
+        List<Object[]> resultList = entityManager.createNativeQuery("SELECT * FROM user_role", Object.class).getResultList();
         if (resultList != null && resultList.size() > 0) {
             resultList.forEach(result -> {
                 System.out.print("\n");
@@ -47,4 +50,5 @@ public class UserTest {
             });
         }
     }
+
 }

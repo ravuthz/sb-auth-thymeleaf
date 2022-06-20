@@ -1,14 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="com.session.auth.AuthApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-    <option name="MAIN_CLASS_NAME" value="com.session.auth.AuthApplication" />
+  <configuration default="false" name="Test All" type="JUnit" factoryName="JUnit">
     <module name="auth" />
-    <extension name="coverage">
-      <pattern>
-        <option name="PATTERN" value=".*" />
-        <option name="ENABLED" value="true" />
-      </pattern>
-    </extension>
     <extension name="net.ashald.envfile">
       <option name="IS_ENABLED" value="false" />
       <option name="IS_SUBST" value="false" />
@@ -19,6 +11,11 @@
         <ENTRY IS_ENABLED="true" PARSER="runconfig" />
       </ENTRIES>
     </extension>
+    <option name="PACKAGE_NAME" value="com.session.auth" />
+    <option name="MAIN_CLASS_NAME" value="" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="package" />
+    <dir value="$PROJECT_DIR$/src/test" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
